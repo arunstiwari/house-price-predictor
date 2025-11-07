@@ -41,3 +41,9 @@ jobs:
       - name: Run Model Processing Pipeline
         run: |
           python src/models/train_model.py   --config configs/model_config.yaml   --data data/processed/featured_house_data.csv   --models-dir models  --mlflow-tracking-uri http://localhost:5555
+
+      - name: MLFlow Cleanup
+        run: |
+          docker stop mlflow-tracking-server
+          docker rm mlflow-tracking-server
+          docker rmi ghcr.io/mlflow/mlflow:latest
