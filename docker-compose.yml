@@ -1,0 +1,19 @@
+services:
+  fastapi:
+    image: arunstiwari/house-predicter-api:dev
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - 9001:8000  
+
+
+  streamlit:
+    image: arunstiwari/streamlitapp:dev
+    build: 
+      context: ./streamlit_app
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    environment: 
+      API_URL: http://fastapi:9001
