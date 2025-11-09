@@ -64,4 +64,5 @@ jobs:
           context: .
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/house-predicter-api:${{ github.sha }}    
+          platforms: linux/amd64,linux/arm64
 
